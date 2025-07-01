@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Orbitron:wght@700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'Inter', 'Rajdhani', sans-serif;
+    background: #000000;
+    color: #ffffff;
+    overflow-x: hidden;
+  }
+  h1, h2, h3, h4, h5, h6, .font-orbitron {
+    font-family: 'Orbitron', 'Inter', sans-serif;
+    letter-spacing: 0.01em;
+  }
+}
+
+@layer components {
+  .neon-glow {
+    text-shadow: 0 0 8px rgba(0,194,203,0.5), 0 0 16px rgba(0,102,255,0.2);
+  }
+  
+  .neon-border {
+    border: 1px solid;
+    box-shadow: 
+      0 0 5px currentColor,
+      inset 0 0 5px currentColor,
+      0 0 15px currentColor,
+      inset 0 0 15px currentColor;
+  }
+  
+  .glitch {
+    position: relative;
+    animation: glitch 2s infinite;
+  }
+  
+  .glitch::before,
+  .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .glitch::before {
+    animation: glitch-1 0.5s infinite;
+    color: #ff4da6;
+    z-index: -1;
+  }
+  
+  .glitch::after {
+    animation: glitch-2 0.5s infinite;
+    color: #00c2cb;
+    z-index: -2;
+  }
+  
+  .wireframe-bg {
+    background-image: 
+      linear-gradient(rgba(0, 102, 255, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 102, 255, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: wireframe-move 20s linear infinite;
+  }
+  
+  .neural-network {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.1;
+    background: radial-gradient(circle at 20% 20%, #0066ff 1px, transparent 1px),
+                radial-gradient(circle at 80% 80%, #00c2cb 1px, transparent 1px),
+                radial-gradient(circle at 40% 60%, #ff6b35 1px, transparent 1px);
+    background-size: 100px 100px, 150px 150px, 200px 200px;
+    animation: neural-pulse 3s ease-in-out infinite;
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .text-gradient {
+    background-size: 200% 200%;
+    animation: gradient-shift 3s ease infinite;
+  }
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes glitch {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+}
+
+@keyframes glitch-1 {
+  0%, 100% { transform: translate(0); }
+  10% { transform: translate(-2px, -2px); }
+  20% { transform: translate(2px, 2px); }
+}
+
+@keyframes glitch-2 {
+  0%, 100% { transform: translate(0); }
+  15% { transform: translate(2px, -2px); }
+  25% { transform: translate(-2px, 2px); }
+}
+
+@keyframes wireframe-move {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(50px, 50px); }
+}
+
+@keyframes neural-pulse {
+  0%, 100% { opacity: 0.1; }
+  50% { opacity: 0.3; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(180deg); }
+}
+
+.floating-element {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Smooth scrolling enhancements */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #0066ff, #00c2cb);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #0080ff, #00e6f0);
+}
+
+/* Enhanced focus states */
+input:focus, button:focus {
+  outline: none;
+}
+
+/* Improved text selection */
+::selection {
+  background: rgba(0, 194, 203, 0.3);
+  color: white;
+}
+
+/* Performance optimizations */
+.fade-in-stagger,
+.text-reveal,
+.scale-in,
+.slide-left,
+.slide-right,
+.parallax-slow,
+.parallax-fast,
+.morph-bg {
+  will-change: transform, opacity;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .neon-glow {
+    text-shadow: 
+      0 0 3px currentColor,
+      0 0 6px currentColor,
+      0 0 9px currentColor;
+  }
+  
+  .glitch::before,
+  .glitch::after {
+    display: none;
+  }
+}
+
+/* Glassmorphism and section polish */
+.section-glass {
+  background: rgba(20, 30, 40, 0.55);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(16px) saturate(180%);
+  border-radius: 2rem;
+  border: 1.5px solid rgba(255,255,255,0.08);
+}
+
+.section-divider {
+  width: 100vw;
+  height: 80px;
+  background: linear-gradient(90deg, rgba(0,194,203,0.08) 0%, rgba(0,102,255,0.08) 50%, rgba(255,107,53,0.08) 100%);
+  margin: 0 auto;
+  border: none;
+}
+
+/* Gradient fade between sections */
+.section-fade {
+  position: relative;
+}
+.section-fade:after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: -40px; height: 80px;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Button and input transitions */
+button, .btn, input, .neon-border {
+  transition: box-shadow 0.4s cubic-bezier(.4,0,.2,1), border 0.3s, background 0.4s, color 0.3s;
+}
+
+/* Soft shadow for cards */
+.card-shadow {
+  box-shadow: 0 4px 32px 0 rgba(0, 102, 255, 0.10), 0 1.5px 8px 0 rgba(0,0,0,0.10);
+}
+
+/* Smoother transitions for section content */
+.fade-in-stagger, .scale-in, .slide-left, .slide-right {
+  transition: all 0.8s cubic-bezier(.4,0,.2,1);
+}
+
+/* Subtle section label */
+.section-label {
+  font-family: 'Orbitron', 'Inter', sans-serif;
+  font-size: 1.1rem;
+  color: #00c2cb;
+  opacity: 0.7;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.5rem;
+  display: inline-block;
+}
+
+/* Remove glitch effect for elegance */
+/* .glitch, .glitch::before, .glitch::after { display: none !important; } */
+
+/* Remove glitch keyframes */
+/* @keyframes glitch {} @keyframes glitch-1 {} @keyframes glitch-2 {} */
